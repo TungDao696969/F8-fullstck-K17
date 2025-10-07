@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tỏ tình Crush 💞</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+      :root {
+        --bg: radial-gradient(circle at top left, #ff9a9e, #fad0c4);
+        --accent: #ff4d79;
+        --accent-light: #ff7ca8;
+        --text: #fff;
+        --muted: #ddd;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        background: url(./img/z7091106056757_6c8919f0fb7bca5a5f9c99dc094f2502.jpg) no-repeat center center/cover;
+        background-size: contain;
+        background-color: #000;
+        color: var(--text);
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+      }
+
+      .card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 40px 30px;
+        width: 360px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        animation: float 4s ease-in-out infinite;
+        margin-left: 140px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #fff;
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 30px;
+        color: var(--muted);
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      button.btn {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 22px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+
+      button.no {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+      }
+
+      button.no:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      button.yes {
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        color: #fff;
+        box-shadow: 0 0 20px rgba(255, 77, 121, 0.5);
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      button.yes a {
+        text-decoration: none;
+        color: white;
+      }
+
+      button.yes:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 77, 121, 0.8);
+      }
+
+      .grow {
+        animation: pop 0.6s ease forwards;
+      }
+
+
+
+      @keyframes pop {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.6);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .msg {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #fff;
+        min-height: 30px;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Hiệu ứng trái tim bay */
+      .heart {
+        position: absolute;
+        color: #ff5e94;
+        font-size: 22px;
+        animation: fly 2s linear forwards;
+      }
+
+      @keyframes fly {
+        0% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-200px) scale(1.8);
+        }
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Em có đồng ý làm người yêu anh không? 💌</h1>
+      <p>
+        Nhấn "Đồng ý" để anh hạnh phúc 💖 — Nhấn "Không" cũng được... nhưng
+        “Đồng ý” đẹp hơn 😆
+      </p>
+
+      <div class="buttons">
+        <button class="btn no" id="btnNo">Không 😢</button>
+        <button class="btn yes" id="btnYes">
+          <a href="./ex02.html">Đồng ý 💖</a>
+        </button>
+      </div>
+
+      <div class="msg" id="msg"></div>
+    </div>
+
+    <script>
+      const btnNo = document.getElementById("btnNo");
+      const btnYes = document.getElementById("btnYes");
+      const msg = document.getElementById("msg");
+
+      let yesScale = 1;
+
+      // Khi nhấn "Không" -> nút "Đồng ý" to dần lên
+      btnNo.addEventListener("click", () => {
+        yesScale += 0.2;
+        btnYes.style.transform = `scale(${yesScale})`;
+        msg.textContent = "Không sao, nhưng anh tin em sẽ đổi ý 😆💖";
+      });
+
+      // Khi nhấn "Đồng ý" -> hiệu ứng nở + trái tim bay
+      btnYes.addEventListener("click", () => {
+        btnYes.classList.remove("grow");
+        void btnYes.offsetWidth;
+        btnYes.classList.add("grow");
+        msg.textContent = "Yay! Anh yêu em nhiều lắm 😍💞";
+
+        // Tạo hiệu ứng trái tim bay
+        for (let i = 0; i < 10; i++) {
+          createHeart();
+        }
+      });
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = 1 + Math.random() * 1.5 + "s";
+        heart.style.fontSize = 18 + Math.random() * 10 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 2000);
+      }
+    </script>
+  </body>
+</html>

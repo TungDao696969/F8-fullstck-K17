@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bức Thư Tình 💌</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #ffdee9, #b5fffc);
+    font-family: "Poppins", sans-serif;
+  }
+
+  .letter-container {
+    text-align: center;
+  }
+
+  /* Phong thư */
+  .envelope {
+    position: relative;
+    width: 520px;
+    height: 300px;
+    margin: 0 auto 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+  }
+
+  .envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.8s ease-in-out;
+  }
+
+  .envelope.open::before {
+    transform: rotateX(180deg);
+  }
+
+  /* Nội dung thư */
+  .message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-in-out;
+  }
+
+  /* .card-title {
+    display: flex;
+  } */
+
+  .message img {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+    height: 200px;
+  }
+
+  .envelope.open .message {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .message h2 {
+    margin: 0;
+    color: #e91e63;
+    font-size: 22px;
+  }
+
+  .message p {
+    margin: 8px 0 0;
+    color: #333;
+    font-size: 15px;
+  }
+
+  /* Nút */
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  button {
+    padding: 10px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+  }
+
+  .open-btn {
+    background: linear-gradient(90deg, #ff8fb1, #ffb6c1);
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+  }
+
+  .open-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.7);
+  }
+
+  .close-btn {
+    background: linear-gradient(90deg, #f5f5f5, #ddd);
+    color: #444;
+  }
+
+  .close-btn:hover {
+    background: #ccc;
+  }
+
+
+  /* Hiệu ứng phóng to nút Mở khi đóng */
+  .grow {
+    animation: growEffect 1s ease forwards;
+  }
+
+  @keyframes growEffect {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+    }
+    50% {
+      transform: scale(1.4);
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.9);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+    }
+  }
+
+  /* Hiệu ứng ánh sáng mờ xung quanh phong thư */
+  .glow {
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+    transition: box-shadow 0.5s ease;
+  }
+
+  .envelope.open.glow {
+    box-shadow: 0 0 50px rgba(255, 105, 180, 0.7);
+  }
+
+</style>
+</head>
+<body>
+  <div class="letter-container">
+    <div class="envelope" id="envelope">
+      <div class="message">
+        <h2>Gửi đến bạn Changgg 💌</h2>
+        <div class="card-title">
+            <img src="./img/500000t-0945.jpg" alt="" srcset="">
+        <!-- <p>
+            <strong>Gửi bạn: Tùng</strong><br>
+            Chúc bạn có một ngày thật tuyệt vời, tràn đầy niềm vui và yêu thương 💖</p> -->
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="open-btn" id="openBtn">Mở</button>
+      <button class="close-btn" id="closeBtn">Đóng</button>
+    </div>
+  </div>
+
+  <script>
+    const envelope = document.getElementById("envelope");
+    const openBtn = document.getElementById("openBtn");
+    const closeBtn = document.getElementById("closeBtn");
+
+    openBtn.addEventListener("click", () => {
+      envelope.classList.add("open", "glow");
+      openBtn.classList.remove("grow");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      envelope.classList.remove("open", "glow");
+      openBtn.classList.remove("grow");
+      void openBtn.offsetWidth; // reset animation
+      openBtn.classList.add("grow");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+/* Thiết lập chung */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ hiện đại, dễ đọc */
+    background-color: #f7f3e8; /* Nền màu kem nhạt, ấm áp */
+    display: flex; /* Dùng Flexbox để căn giữa nội dung */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Chiều cao tối thiểu là 100% viewport (màn hình) */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Khung thư tỏ tình */
+.love-letter {
+    background-color: #ffffff; /* Nền trắng cho lá thư */
+    border: 1px solid #e0d9c9; /* Viền mỏng, tinh tế */
+    border-radius: 12px; /* Góc bo tròn mềm mại */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Tạo bóng đổ nhẹ nhàng, sang trọng */
+    padding: 40px;
+    max-width: 600px; /* Giới hạn chiều rộng lá thư */
+    width: 100%;
+    text-align: center; /* Căn giữa toàn bộ nội dung trong thư */
+    line-height: 1.6; /* Khoảng cách dòng thoáng đãng */
+    color: #333; /* Màu chữ đen xám nhẹ */
+}
+
+/* Tiêu đề */
+header h1 {
+    color: #a3415c; /* Màu hồng đậm, lãng mạn */
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    font-weight: 700;
+    border-bottom: 2px solid #f0e6e6; /* Đường kẻ dưới tiêu đề */
+    padding-bottom: 10px;
+}
+
+/* Nội dung thông điệp */
+.message p {
+    text-align: left; /* Căn lề trái cho đoạn văn */
+    margin-bottom: 1.2em;
+    font-size: 1.1em;
+}
+
+/* Phần tỏ tình chính (Nổi bật nhất) */
+.confession {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: #d11c42; /* Màu đỏ tươi tắn, thu hút */
+    margin: 30px 0;
+    padding: 15px;
+    border: 3px dashed #f0c4c4; /* Khung viền đứt nét lãng mạn */
+    background-color: #fffafa; /* Nền trắng tinh khôi */
+    display: inline-block; /* Chỉ chiếm không gian cần thiết */
+    border-radius: 8px;
+    animation: pulse 1.5s infinite; /* Hiệu ứng "nhịp đập" nhẹ nhàng */
+}
+
+/* Icon trái tim */
+.heart-icon {
+    margin: 0 10px;
+    display: inline-block;
+    color: #d11c42;
+}
+
+/* Chữ ký */
+footer p {
+    margin-top: 25px;
+    font-style: italic;
+    font-weight: 600;
+    text-align: right; /* Căn lề phải cho chữ ký */
+    color: #555;
+}
+
+/* Hiệu ứng hoạt hình (Animation) */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05); /* Lớn hơn một chút */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
